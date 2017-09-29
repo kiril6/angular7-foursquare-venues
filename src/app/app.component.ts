@@ -4,15 +4,17 @@ import { Http, Response } from '@angular/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   constructor(private http: Http) { }
   loadedFeature = 'recipe';
   public venue;
   private foodIs = '';
+  private credentials='client_id=QM2U4XNDGAZS2PZUYEH001OCBDBUBXBT1VZT5N4CT1DOI0ZX&client_secret=JFS0JK3BY3KND5OIY3FMEA4P5VP5G3FV31A4THXELDPB0ASA';
+  // private clientSecret='';
 
-  private url = 'https://api.foursquare.com/v2/venues/search?client_id=QM2U4XNDGAZS2PZUYEH001OCBDBUBXBT1VZT5N4CT1DOI0ZX&client_secret=JFS0JK3BY3KND5OIY3FMEA4P5VP5G3FV31A4THXELDPB0ASA&ll=40.7,-74&query='+this.foodIs+'&v=20172209&m=foursquare';
+  private url = 'https://api.foursquare.com/v2/venues/search?'+this.credentials+'&ll=40.7,-74&query='+this.foodIs+'&v=20172209&m=foursquare';
 
   onNavigate(feature: string) {
     // this.loadedFeature = feature;
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
 
   foodType(amount){
     this.foodIs = amount;
-    this.url = 'https://api.foursquare.com/v2/venues/search?client_id=QM2U4XNDGAZS2PZUYEH001OCBDBUBXBT1VZT5N4CT1DOI0ZX&client_secret=JFS0JK3BY3KND5OIY3FMEA4P5VP5G3FV31A4THXELDPB0ASA&ll=40.7,-74&query='+this.foodIs+'&v=20172209&m=foursquare';
+    this.url = 'https://api.foursquare.com/v2/venues/search?'+this.credentials+'&ll=40.7,-74&query='+this.foodIs+'&v=20172209&m=foursquare';
     console.log('food is '+ this.foodIs);
     console.log(this.foodIs);
     console.log('vlez init');
