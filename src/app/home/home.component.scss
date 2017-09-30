@@ -1,0 +1,34 @@
+
+h2 {
+    font-weight: 900;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #134f4e;
+}
+
+.frame {
+    width: 50%; 
+    margin: 60px auto 0 auto;
+ 
+}
+
+#results {
+    text-align: left;
+    padding-top: 20px;
+    overflow-y: scroll;
+    height: 600px;
+    background: white;
+    border-radius: 5px;
+}
+
+.result {
+    padding-bottom: 5px;
+}
+
+.error {
+    border: 2px solid #AA5959;
+}
+.error-msg {
+    font-weight: bold;
+    color: darkred;
+    border-bottom: 2px solid darkred;
+}

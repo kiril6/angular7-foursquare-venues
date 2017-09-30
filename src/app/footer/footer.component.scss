@@ -1,0 +1,19 @@
+div {
+    background: black;
+    color: white;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+    height: 40px;
+    a {
+        color:#0a93a6;
+        text-decoration:none;
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}

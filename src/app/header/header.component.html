@@ -1,22 +1,34 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a routerLink="/" class="navbar-brand">Recipe Book</a>
+      <a (click)="this.goHome()" class="navbar-brand" href="javascript:;">Find Place For</a>
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
-        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
-          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-            <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
-          </ul>
+        <li id="home" *ngIf="!this.dataGetService.data" routerLinkActive="active"><a routerLink="/home">Home</a></li>
+
+        <!-- 1st field -->
+        <li *ngIf="this.dataGetService.data">
+          <div class="form-group category space">
+            <select [ngClass]="{'error' : this.dataGetService.errorCategory}" (change)="this.dataGetService.changed()" [(ngModel)]="dataGetService.category"
+              class="form-control input-lg" id="sel1">
+              <option selected>I look for... </option>
+              <option value="{{categories.pluralName}}" *ngFor='let categories of this.dataGetService.categories?.categories' >{{categories.pluralName}}</option>
+            </select>
+          </div>
         </li>
+
+        <!-- 2nd field -->
+        <li *ngIf="this.dataGetService.data">
+          <div class="form-group space">
+            <input (change)="this.dataGetService.changed()" [ngClass]="{'error' : this.dataGetService.errorLocation}" type="text" class="form-control input-lg"
+              placeholder="Where..." [(ngModel)]="dataGetService.location">
+          </div>
+        </li>
+
+        <!-- search button -->
+        <li *ngIf="this.dataGetService.data"><button type="button" routerLink="/home/results" class="btn btn-default btn-lg" (click)="dataGetService.collectData()"><i class="fa fa-search" aria-hidden="true"></i></button></li>
       </ul>
     </div>
   </div>

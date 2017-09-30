@@ -1,0 +1,41 @@
+<div *ngIf="!this.dataGetService.data">
+  <h2>FIND A PLACE FOR...</h2>
+  <div class="frame">
+
+    <!-- 1st field -->
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="form-group">
+        <select (change)="this.dataGetService.clearError1()" [ngClass]="{'error' : this.dataGetService.errorCategory}" [(ngModel)]="dataGetService.category"
+          class="form-control input-lg" id="sel1">
+          <option selected>I look for... </option>
+          <option value="{{categories.pluralName}}" *ngFor='let categories of this.dataGetService.categories?.categories' >{{categories.pluralName}}</option>
+       </select>
+      </div>
+    </div>
+
+    <!-- 2nd field -->
+    <div class="col-md-4 col-sm-4 col-xs-4">
+      <div class="form-group">
+        <input (change)="this.dataGetService.clearError2()" [ngClass]="{'error' : this.dataGetService.errorLocation}" type="text"
+          class="form-control input-lg" placeholder="Where..." [(ngModel)]="dataGetService.location">
+      </div>
+    </div>
+
+    <!-- search button -->
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <button routerLink="/home/results" type="button" class="btn btn-primary btn-lg" (click)="dataGetService.collectData()"><i class="fa fa-search" aria-hidden="true"></i> Search </button>
+    </div>
+    <!-- error messages -->
+    <div class="col-md-6 col-sm-6 col-xs-6"><span *ngIf="this.dataGetService.errorCategory" [ngClass]="{'error-msg' : this.dataGetService.errorCategory}">Please select category</span></div>
+    <div class="col-md-4 col-sm-4 col-xs-6"><span *ngIf="this.dataGetService.errorLocation" [ngClass]="{'error-msg' : this.dataGetService.errorLocation}">Please enter location</span></div>
+
+  </div>
+</div>
+
+<!-- results displaying -->
+<div id="results" *ngIf="this.dataGetService.data" [style.display]="this.dataGetService.hasChanges ? 'none' : 'block'">
+  <div *ngFor='let list of this.dataGetService.data?.venues' class="col-md-12 col-sm-12">
+    <div class="col-md-6 col-md-6 col-xs-6 result"> - <b>Venue:</b> {{list.name}} <br> &nbsp; <b>Address:</b>{{list.location.formattedAddress}}</div>
+    <div class="col-md-6 col-sm-6 col-xs-6 result"><button class="btn btn-default btn-sm"><a target="_blank" href="http://maps.google.com/maps?q={{list.location.lat}},{{list.location.lng}}"><i class="fa fa-map" aria-hidden="true"></i> show on map</a> </button></div>
+  </div>
+</div>
