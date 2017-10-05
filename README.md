@@ -6,3 +6,7 @@ npm install
 npm start
 
 Access url http://localhost:4600
+
+If you like this and you found useful you can contribute on my paypal kirilrap@aol.com
+
+Cheers!
