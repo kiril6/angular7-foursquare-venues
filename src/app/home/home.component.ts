@@ -7,7 +7,7 @@ import { DataGetService } from '../shared/data-get.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(private dataGetService: DataGetService) { }
+  constructor(public dataGetService: DataGetService) { }
 
   ngOnInit() {
     this.dataGetService.getCategories();

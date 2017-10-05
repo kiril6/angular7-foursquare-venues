@@ -36,7 +36,7 @@ import { DataGetService } from '../shared/data-get.service';
   `]
 })
 export class HeaderComponent {
-  constructor(private dataGetService: DataGetService) { }
+  constructor(public dataGetService: DataGetService) { }
 
   goHome() {
     window.location.href = "/";

@@ -7,7 +7,7 @@ import { DataGetService } from './shared/data-get.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private dataGetService: DataGetService) { }
+  constructor(public dataGetService: DataGetService) { }
  
   ngOnDestroy() {
     this.dataGetService.data;
