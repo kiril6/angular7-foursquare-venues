@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Response } from '@angular/http';
 import { DataGetService } from '../shared/data-get.service';
 
 @Component({
@@ -39,7 +38,7 @@ export class HeaderComponent {
   constructor(public dataGetService: DataGetService) { }
 
   goHome() {
-    window.location.href = "/";
+    location.href = "/";
   }
 
 }

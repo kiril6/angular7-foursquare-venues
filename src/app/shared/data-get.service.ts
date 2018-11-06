@@ -17,7 +17,7 @@ export class DataGetService {
   private hasChanges: boolean = false;
 
   getCategories() {
-    this.http.get('https://api.foursquare.com/v2/venues/categories?'+ this.credentials +'&v=20170930')
+    this.http.get('https://api.foursquare.com/v2/venues/categories?' + this.credentials + '&v=20170930')
       .map(
       (response: Response) => {
         return response.json();
@@ -43,7 +43,7 @@ export class DataGetService {
   }
 
   searchType() {
-    if (this.category.length > 0 && this.category != 'I look for...') {
+    if (this.category.length > 0 && this.category !== 'I look for...') {
       if (this.location.length > 0) {
         this.getUrl();
       } else {
@@ -55,26 +55,22 @@ export class DataGetService {
   }
 
   collectData() {
-    this.selectCategory();
-    this.selectLocation();
+    this.selectData();
     this.searchType();
   }
 
-  selectLocation() {
+  selectData() {
     this.location;
-  }
-  selectCategory() {
     this.category;
   }
-
-  clearError1() {
-    this.errorCategory = false;
+  clearError(parameter) {
+    if (parameter === 'location') {
+      this.errorLocation = false;
+    }else if (parameter === 'categories') {
+      this.errorCategory = false;
+    }
+ 
   }
-
-  clearError2() {
-    this.errorLocation = false;
-  }
-
   changed() {
     this.hasChanges = true;
   }

@@ -5,7 +5,7 @@
     <!-- 1st field -->
     <div class="col-md-6 col-sm-6 col-xs-6">
       <div class="form-group">
-        <select (change)="this.dataGetService.clearError1()" [ngClass]="{'error' : this.dataGetService.errorCategory}" [(ngModel)]="dataGetService.category"
+        <select (change)="this.dataGetService.clearError('categories')" [ngClass]="{'error' : this.dataGetService.errorCategory}" [(ngModel)]="dataGetService.category"
           class="form-control input-lg" id="sel1">
           <option selected>I look for... </option>
           <option value="{{categories.pluralName}}" *ngFor='let categories of this.dataGetService.categories?.categories' >{{categories.pluralName}}</option>
@@ -16,7 +16,7 @@
     <!-- 2nd field -->
     <div class="col-md-4 col-sm-4 col-xs-4">
       <div class="form-group">
-        <input (change)="this.dataGetService.clearError2()" [ngClass]="{'error' : this.dataGetService.errorLocation}" type="text"
+        <input (change)="this.dataGetService.clearError('location')" [ngClass]="{'error' : this.dataGetService.errorLocation}" type="text"
           class="form-control input-lg" placeholder="Where..." [(ngModel)]="dataGetService.location">
       </div>
     </div>
