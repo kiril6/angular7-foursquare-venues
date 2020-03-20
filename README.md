@@ -7,6 +7,4 @@ npm/yarn start
 
 Access url http://localhost:4600
 
-If you like this and you found useful you can contribute on my paypal kirilrap@aol.com
-
-Cheers!
+buy me a coffee http://buymeacoff.ee/ec1Pdqk
