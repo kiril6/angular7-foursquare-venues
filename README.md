@@ -7,5 +7,3 @@ npm/yarn install
 npm/yarn start
 
 Access url http://localhost:4600
-
-buy me a coffee http://buymeacoff.ee/ec1Pdqk
